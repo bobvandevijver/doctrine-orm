@@ -1278,6 +1278,9 @@ class BasicEntityPersister implements EntityPersister
             return $this->currentPersisterContext->selectColumnListSql;
         }
 
+        // Reset the alias counter as we are generating a new column list
+        $this->currentPersisterContext->sqlAliasCounter = 0;
+
         $columnList = [];
         $this->currentPersisterContext->rsm->addEntityResult($this->class->name, 'r'); // r for root
 
